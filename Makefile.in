@@ -1,0 +1,91 @@
+
+all_targets := rv32
+targets     := $(all_targets)
+
+include @top_builddir@/prefix.mk
+
+MK_TARGET_PROC?=rv32
+
+prerequisites := $(if $(chiseldir),chisel-timestamp)
+
+all: $(prerequisites) $(patsubst %,emulator/%/emulator,$(targets))
+
+install: all
+	install -d $(RISCV)/bin
+	$(if $(findstring rv32,$(targets)),install -s -p -m 755 emulator/rv32/emulator $(RISCV)/bin/rv32-emulator)
+
+run-emulator: $(patsubst %,emulator/%/generated-src/timestamp,$(targets))
+
+run-emulator-debug: $(patsubst %,emulator/%/generated-src-debug/timestamp,$(targets))
+
+clean-tests:
+	make -C $(patsubst %,emulator/%,$(all_targets)) clean-tests
+
+clean:
+	for d in $(patsubst %,emulator/%,$(all_targets)) ; do \
+		make -C $$d clean ; \
+	done
+
+chisel-timestamp: $(wildcard $(chiseldir)/src/main/scala/*.scala)
+	cd $(chiseldir) && $(SBT) publish-local
+	date > $@
+
+emulator/%/generated-src/timestamp: emulator/%/emulator
+	@echo
+	@echo running basedir/Makefile: make run-emulator
+	@echo
+	make -C $(dir $<) run
+	install -d $(dir $@)
+	date > $@
+
+emulator/%/generated-src-debug/timestamp: emulator/%/emulator-debug
+	@echo
+	@echo running basedir/Makefile: make run-emulator-debug
+	@echo
+	make -C $(dir $<) run-debug
+	install -d $(dir $@)
+	date > $@
+
+emulator/%/emulator: $(prerequisites)
+	make -C $(dir $@)
+
+emulator/%/emulator-debug: $(prerequisites)
+	make -C $(dir $@) emulator-debug
+
+.PHONY: run-emulator target clean clean-tests
+
+# Because we are using recursive makefiles and emulator is an actual file.
+emulator/rv32/emulator: $(wildcard $(srcDir)/src/main/scala/common/*.scala) \
+                                 $(wildcard $(srcDir)/src/main/scala/rv32/*.scala)
+
+emulator/rv32_1stage/emulator-debug: $(wildcard $(srcDir)/src/main/scala/common/*.scala) \
+                                 $(wildcard $(srcDir)/src/main/scala/rv32/*.scala)
+
+unit-test:
+	#Execute Chisel unit-test function
+	clear && sbt "testOnly *rvsim.RVTilePeekPokeSpec"
+
+clean-unit:
+	@echo Remove generated meta-data: .in/.out/.cmd
+	@find -maxdepth 1 | grep -E '.*[0-9](.in|.out|.cmd)$$' | xargs rm -rf
+	@echo Remove tester directory
+	@rm -rf test_run_dir
+
+Note: in expression '.*[0-9](.in|.out|.cmd)$$', $$ is used to represent single '$' in Makefile system
+
+clean-deep:
+	rm -rf ./autom4te.cache
+	rm -f config.log
+	rm -f config.status
+	rm -rf ./common
+	rm -rf ./project/project
+	rm -rf ./project/target
+	rm -rf ./rv32
+	rm -rf ./target
+	@find -maxdepth 1 | grep -E '.*[0-9](.in|.out|.cmd)$$' | xargs rm -rf
+	rm -rf test_run_dir
+	for d in $(patsubst %,emulator/%,$(all_targets)) ; do \
+		make -C $$d clean ; \
+	done
+
+.PHONY: unit-test clean-unit clean-deep

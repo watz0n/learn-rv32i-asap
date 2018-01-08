@@ -1,0 +1,37 @@
+# ignore by sodor project
+# ref: https://github.com/ucb-bar/riscv-sodor/blob/master/.gitignore
+emulator/*/*.out
+emulator/*/*.out.gz
+emulator/*/emulator
+emulator/*/emulator-debug
+emulator/*/generated-src
+emulator/*/generated-src-debug
+emulator/*/*.o
+emulator/*/*.a
+emulator/*/output/
+project/build.scala
+project/plugins.sbt
+project/build.properties
+prefix.mk
+*.tar.gz
+install/share
+*.pyc
+*.swp
+*.vcd
+*.vpd
+.DS_Store
+sbt/*/target
+*/target
+*.log
+
+# Ignore from current work
+autom4te.cache
+config.log
+config.status
+/common
+/project/project
+/project/target
+/rv32
+/target
+/test_run_dir
+/Makefile

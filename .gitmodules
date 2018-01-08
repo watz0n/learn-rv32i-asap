@@ -1,0 +1,3 @@
+[submodule "riscv-fesvr"]
+	path = riscv-fesvr
+	url = https://github.com/codelec/riscv-fesvr.git
