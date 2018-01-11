@@ -230,7 +230,9 @@ TODO
 FAQs
 ===
 *Hey! You have some typo or something wrong! Where are you?*
-* Directly use issue or pull request
-* E-Mail: watz0n.tw@gmail.com
-* Website: https://blog.watz0n.tech/
-* Backup: https://watz0n.github.io/
+
+If you have any questions, corrections, or other feedback, you can email me or open an issus.
+
+* E-Mail:   watz0n.tw@gmail.com
+* Blog:     https://blog.watz0n.tech
+* Backup:   https://watz0n.github.io
