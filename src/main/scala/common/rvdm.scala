@@ -443,6 +443,9 @@ class rvdm extends Module {
     when((io.dmi.req.bits.addr === "h44".U) && io.dmi.req.valid){
         reg_rstcore := false.B
     }
+    when((io.dmi.req.bits.addr === "h48".U) && io.dmi.req.valid){
+        reg_rstcore := true.B
+    }
 
     //Actually Initialized by reset
     when(reset.toBool()) {
