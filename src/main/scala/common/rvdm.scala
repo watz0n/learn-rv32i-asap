@@ -426,8 +426,6 @@ class rvdm extends Module {
         }
     }
 
-    
-
     when(!(sel_map(dm_addr.sbdata0))) {
         reg_mrdata_requested := false.B
         reg_mwdata_requested := false.B
@@ -439,7 +437,8 @@ class rvdm extends Module {
 
     io.rstcore := reg_rstcore
 
-    //Custom Function from Sodor Core
+    //NON-STANDARD Function from Sodor Wiki
+    //Ref: https://github.com/librecores/riscv-sodor/wiki/overview
     when((io.dmi.req.bits.addr === "h44".U) && io.dmi.req.valid){
         reg_rstcore := false.B
     }

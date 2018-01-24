@@ -69,10 +69,9 @@ class rvdpath extends Module {
     io.imem.req.data := 0.U
     io.imem.req.mfunc := mram_op.MF_RD
     io.imem.req.mtype := mram_op.MT_W
-    io.imem.req.valid := false.B
+    io.imem.req.valid := true.B
 
-    when(io.imem.req.ready) {
-        io.imem.req.valid := true.B
+    when(io.imem.resp.valid) {
         pc := pc_next
     }
 
