@@ -219,13 +219,18 @@ Projects
 * [GitHub learn-rv32i-unittest-alu](https://github.com/watz0n/learn-rv32i-unittest-alu) : The beginning of this projcet, represent the first step for building RISCV Reg-Reg and Reg-Imm datapath form scratch.
 
 
-TODO
+TODO List
 ===
 * Document for chisel3-gcd, chisel3-rv32i-unittest-alu
 * 5-stage pipeline
-* Synchronous Memory
-* FPGA synthesis
-* Connect fesvr to JTAG Interface on FPGA
+
+
+Done List
+===
+* Synchronous Memory : [learn-rv32i-arty project](https://github.com/watz0n/learn-rv32i-arty)
+* FPGA synthesis : [learn-rv32i-arty project](https://github.com/watz0n/learn-rv32i-arty)
+* Connect fesvr to JTAG Interface on FPGA : [learn-rv32i-arty project](https://github.com/watz0n/learn-rv32i-arty)
+
 
 FAQs
 ===
