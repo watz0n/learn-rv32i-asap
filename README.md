@@ -13,11 +13,11 @@ Current implementation has these features:
 * Magic RAM form Chisel3 Mem() module
 * Pass Sodor Project pre-compiled `riscv-tests` and `riscv-bmarks`
 
-This project start from RV32I Base Instruction Set at Volumn I page 104 and the lecture [Berkeley CS152 FA16, L3: From CISC to RISC](http://www-inst.eecs.berkeley.edu/~cs152/fa16/lectures/L03-CISCRISC.pdf), from Reg-Reg at page 10, until JALR at page 17. Then reference the [Sodor Project](https://github.com/librecores/riscv-sodor) and privileged specification to implement CSR and SimDTM to link `riscv-fesvr` for running pre-compiled test-bench. Current [system diagram](https://github.com/watz0n/learn-rv32i-asap/blob/master/doc/Chisel3-RV32I-ASAP-Overview.png) and [data-path diagram](https://github.com/watz0n/learn-rv32i-asap/blob/master/doc/Chisel3-RV32I-ASAP-DataPath.png) are under `./doc` directory. If data-path diagram is too complicat to find wire name, you can use [draw.io](https://www.draw.io/) service to open .XML file and search the keyword.
+This project start from RV32I Base Instruction Set at Volumn I page 104 and the lecture [Berkeley CS152 FA16, L3: From CISC to RISC](http://www-inst.eecs.berkeley.edu/~cs152/fa16/lectures/L03-CISCRISC.pdf), from Reg-Reg at page 10, until JALR at page 17. Then reference the [Sodor Project](https://github.com/librecores/riscv-sodor) and privileged specification to implement CSR and SimDTM to link `riscv-fesvr` for running pre-compiled test-bench. Current [system diagram](https://github.com/watz0n/learn-rv32i-asap/blob/master/doc/Chisel3-RV32I-ASAP-Overview.png) and [data-path diagram](https://github.com/watz0n/learn-rv32i-asap/blob/master/doc/Chisel3-RV32I-ASAP-DataPath.png) are under `./doc` directory. If data-path diagram is too complicated to find wire name, you can use [draw.io](https://www.draw.io/) service to open .XML file and search the keyword.
 
-The memory system is implemented by Chisel3 Mem() module, it has lower memory region start from `0x00000000` for unit-test, and higher memory region start from `0x80000000` for `riscv-fesvr` entry point. Each memory region has `0x10000` bytes capacity. But the memory can't be allocated too much. If it's over 1MBs(`0x100000`), Verilator emulator would crash from OS memory barrier. An I think the solution would like [Sodor Project](https://github.com/librecores/riscv-sodor) to declare a memory in Verilog from BlackBox.
+The memory system is implemented by Chisel3 Mem() module, it has lower memory region start from `0x00000000` for unit-test, and higher memory region start from `0x80000000` for `riscv-fesvr` entry point. Each memory region has `0x10000` bytes capacity. But the memory can't be allocated too much. If it's over 1MBs(`0x100000`), Verilator emulator would crash from OS memory barrier. And I think the solution would like [Sodor Project](https://github.com/librecores/riscv-sodor) to declare a memory in Verilog from BlackBox.
 
-If you wish to have more fundamental learning material, like how to use Chisel3, please reference [learn-chisel3-gcd](https://github.com/watz0n/learn-chisel3-gcd). If you feel current project is messy and need a clean start point, please reference [learn-rv32i-unittest-alu](https://github.com/watz0n/learn-rv32i-unittest-alu).
+If you wish to have more fundamental learning material, like how to use Chisel3, please refer [learn-chisel3-gcd](https://github.com/watz0n/learn-chisel3-gcd). If you feel current project is messy and need a clean start point, please refer [learn-rv32i-unittest-alu](https://github.com/watz0n/learn-rv32i-unittest-alu).
 
 Adhere, we are focus how to build RV32I emulator and use unit-test in this repo. If you are interested to know how I implement this project from scratch and handle the Chisel3 error in detail, please reference [my development notes](https://watz0n.github.io/blog/en-post/2018/01/10/learn-rv32i-series-en.html). But it would be under-construction before the documents for learn-chisel3-gcd and learn-rv32i-unittest-alu are ready. 
 
@@ -126,7 +126,7 @@ make run-emulator-debug
 make clean
 ```
 
-If you need simple unit-test for your new instruction, you can reference the Chisel code in `./src/test/scala/rv32/rvtile_unittest.scala`, and build your custom test-bench.
+If you need simple unit-test for your new instruction, you can refer to the Chisel code in `./src/test/scala/rv32/rvtile_unittest.scala`, and build your custom test-bench.
 
 *New: Running Unit-Test in rvtile_unittest.scala*
 ```bash
@@ -188,7 +188,7 @@ make run-emulator-debug
 Learning Materials
 ===
 
-Below is my short list to know how to build RISCV-32I from Chisel, hope it would help your on your walkthrough.
+Below is my short list to know how to build RISCV-32I from Chisel, hope it would help you on your walkthrough.
 
 University Courses (Online Data)
 ---
