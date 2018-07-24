@@ -1,7 +1,7 @@
 A Simple As Possible RISCV-32I Implementation by Chisel3
 ===
 
-This project is a toy-project to build RISCV-32I by Chisel3 form scratch, and verified the functionality by Berkeley front-end server `riscv-fesvr`. The concept is coming from [RISCV Sodor Project](https://github.com/librecores/riscv-sodor).
+This project is a toy-project to build RISCV-32I by Chisel3 from scratch, and verify the functionality by Berkeley front-end server `riscv-fesvr`. The concept is coming from [RISCV Sodor Project](https://github.com/librecores/riscv-sodor).
 
 Current implementation has these features:
 
@@ -19,7 +19,7 @@ The memory system is implemented by Chisel3 Mem() module, it has lower memory re
 
 If you wish to have more fundamental learning material, like how to use Chisel3, please reference [learn-chisel3-gcd](https://github.com/watz0n/learn-chisel3-gcd). If you feel current project is messy and need a clean start point, please reference [learn-rv32i-unittest-alu](https://github.com/watz0n/learn-rv32i-unittest-alu).
 
-Adhere, we are focus how to build RV32I emulator and use unit-test in this repo. If you are interesting how I implement this project from scratch and handle the Chisel3 error in detail, please reference [my development notes](https://watz0n.github.io/blog/en-post/2018/01/10/learn-rv32i-series-en.html). But it would be under-construction before the documents for learn-chisel3-gcd and learn-rv32i-unittest-alu are ready. 
+Adhere, we are focus how to build RV32I emulator and use unit-test in this repo. If you are interested to know how I implement this project from scratch and handle the Chisel3 error in detail, please reference [my development notes](https://watz0n.github.io/blog/en-post/2018/01/10/learn-rv32i-series-en.html). But it would be under-construction before the documents for learn-chisel3-gcd and learn-rv32i-unittest-alu are ready. 
 
 Setup Chisel3 Build Environment
 ===
@@ -68,7 +68,7 @@ git clone --recursive https://github.com/watz0n/learn-rv32i-asap
 cd learn-rv32i-asap
 ```
 
-Directory structue in repo.
+Directory structure in repo.
 ===
 * .\doc\ : System Overview and Data-Path Diagram
 * .\emulator\ : Emulator main code, and DTM simulator for riscv-fesver
@@ -109,7 +109,7 @@ make
 Makefile operations for Emulator and Unit-Test
 ===
 
-Almost the same with [Sodor Project](https://github.com/librecores/riscv-sodor#running-the-risc-v-tests), but I remove statistics function and add unit-test option. 
+Almost the same with [Sodor Project](https://github.com/librecores/riscv-sodor#running-the-risc-v-tests), but I removed statistics function and added unit-test option. 
 
 *Running Sodor RISC-V Tests*
 ```bash
@@ -236,7 +236,7 @@ FAQs
 ===
 *Hey! You have some typo or something wrong! Where are you?*
 
-If you have any questions, corrections, or other feedback, you can email me or open an issus.
+If you have any questions, corrections, or other feedback, you can email me or open an issue.
 
 * E-Mail:   watz0n.tw@gmail.com
 * Blog:     https://blog.watz0n.tech
